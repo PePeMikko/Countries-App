@@ -2,26 +2,43 @@
 <html lang="en">
     <head>
         <title>Countries App</title>
-        <link href="./output.css" rel="stylesheet
-        ">
+        <link href="./output.css" rel="stylesheet">
     </head>
-    <body>
-        <header class="flex items items-center justify-between">
+    <body class="min-h-screen bg-[#fafafa] text-[#111517]">
+        <header class="flex items-center justify-between bg-white px-6 py-4 shadow-sm">
             <h1 class="text-lg font-extrabold text-black">Where in the World?</h1>
-            <button id="theme-switcher-button" type="button">Dark Mode</button>
+            <button id="theme-switcher-button" type="button"><i data-lucide="moon"></i> Dark Mode</button>
         </header>
-        <main>
-            <form>
-                <label for="country"></label>
-                <input type="text" id="country">
-                <label for="region"></label>
-                <input type="text" id="region">
-            </form>
-        </main>
-        <footer>
-            <div class="country-results">
-                
+        <main class="mx-auto max-w-[1280px] px-6 py-9">
+            <div class="flex items-center justify-between mb-10">
+                <label for="country" class="sr-only">Search for a country</label>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="search" aria-hidden="true"></i>
+                    <input
+                        type="search"
+                        id="country"
+                        name="country"
+                        placeholder="Search for a country...">
+                </div>
+
+                    <label for="region" class="sr-only">Filter by region</label>
+                    <select id="region" name="region">
+                        <option value="">Filter by Region</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Americas">Americas</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceania</option>
+                    </select>
             </div>
-        </footer>
+            <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4" id="country-results">
+
+            </div>
+        </main>
+        
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+        lucide.createIcons();
+        </script>
     </body>
 </html>

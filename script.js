@@ -47,12 +47,14 @@ function renderCountry(countries) {
 		const countryLink = `country.html?name=${encodeURIComponent(country.name)}`;
 		
 		countryHTML += /* html */ `
-			<div>
-				<a href="${countryLink}"><img src="${country.flags.png}"></a>
-				<div>${country.name}</div>
-				<div>Population: ${country.population}</div>
-				<div>Region: ${country.region}</div>
-				<div>Capital: ${country.capital}</div>
+			<div class="bg-white dark:bg-[#2b3945] rounded-sm shadow-sm overflow-hidden leading-6">
+				<a href="${countryLink}"><img src="${country.flags.png}" class="h-48 object-cover w-full"></a>
+				<div class="p-5 text-lg font-bold">${country.name}</div>
+				<div class="p-5">
+					<div class="text-sm">Population: ${country.population}</div>
+					<div class="text-sm">Region: ${country.region}</div>
+					<div class="text-sm">Capital: ${country.capital}</div>
+				</div>
 			</div>
 		`;
 	});

@@ -38,7 +38,7 @@ function renderCountrySpecial(country, countries) {
             });
 
             const countryLink = `country.html?name=${encodeURIComponent(borderCountry.name)}`;
-            return `<a href="${countryLink}">${borderCountry.name}</a>`;
+            return `<a href="${countryLink}" class="rounded-sm bg-white px-4 py-2 shadow-sm dark:bg-[#2b3945]">${borderCountry.name}</a>`;
         });
     }
     else {
@@ -48,22 +48,24 @@ function renderCountrySpecial(country, countries) {
 	let countryHTML = '';
 
 	countryHTML += /* html */ `
-		<div>
-			<img src="${country.flags.png}">
-
-            <div>${country.name}</div>
-
-			<div>Native Name: ${country.nativeName}</div>
-			<div>Population: ${country.population}</div>
-			<div>Region: ${country.region}</div>
-            <div>Sub Region: ${country.subregion}</div>
-			<div>Capital: ${country.capital}</div>
-
-            <div>Top Level Domain: ${country.topLevelDomain}</div>
-            <div>Currencies: ${country.currencies[0].name}</div>
-            <div>Languages: ${country.languages.map((language) => language.name).join(', ')}</div>
-
-            <div>Border Countries: ${borderCountries.join(', ')}</div>
+		<div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
+            <img src="${country.flags.png}" alt="${country.name} flag" class="w-full aspect-[7/5] object-cover">
+            <div class="grid gap-8">
+                <div class="text-2xl font-bold">${country.name}</div>
+                <div class="grid grid-cols-1 gap-x-8 gap-y-2 text-sm leading-6 sm:grid-cols-2">
+                    <div>Native Name: ${country.nativeName}</div>
+                    <div>Population: ${country.population}</div>
+                    <div>Region: ${country.region}</div>
+                    <div>Sub Region: ${country.subregion}</div>
+                    <div>Capital: ${country.capital}</div>
+                    <div>Top Level Domain: ${country.topLevelDomain}</div>
+                    <div>Currencies: ${country.currencies[0].name}</div>
+                    <div>Languages: ${country.languages.map((language) => language.name).join(', ')}</div>
+                </div>
+                <div class="mt-8 flex flex-wrap items-center gap-3 text-sm">
+                    <span>Border Countries:</span>${borderCountries.join('')}
+                </div>
+            </div>
 		</div>
 	`;
 

@@ -59,3 +59,22 @@ function renderCountry(countries) {
 
 	document.querySelector('.js-country-grid').innerHTML = countryHTML;
 }
+
+/*
+Country Search
+*/
+
+const CountrySelect = document.getElementById('country');
+
+CountrySelect.addEventListener('input', () => {
+	const trimmedValue = CountrySelect.value.trim();
+	const lowerCase = trimmedValue.toLowerCase();
+	const getCountry = allCountries.filter((country) => {
+		if (country.name.toLowerCase().includes(lowerCase)) {
+			return true
+		} else {
+			return false
+		}
+	})
+	renderCountry(getCountry);
+});

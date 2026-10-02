@@ -14,7 +14,6 @@ themeButton.addEventListener("click", () => {
 /*
 country logic
 */
-
 let allCountries = [];
 
 const regionSelect = document.querySelector('#region');
@@ -45,9 +44,11 @@ function renderCountry(countries) {
 	let countryHTML = '';
 
 	countries.forEach((country) => {
+		const countryLink = `country.html?name=${encodeURIComponent(country.name)}`;
+		
 		countryHTML += /* html */ `
 			<div>
-				<img src="${country.flags.png}">
+				<a href="${countryLink}"><img src="${country.flags.png}"></a>
 				<div>${country.name}</div>
 				<div>Population: ${country.population}</div>
 				<div>Region: ${country.region}</div>

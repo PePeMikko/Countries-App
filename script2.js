@@ -1,14 +1,33 @@
 /*
 Dark mode swticher
 */
+const savedTheme = localStorage.getItem("theme");
+
 const themeButton = document.querySelector("#theme-switcher-button");
 const themeLabel = document.querySelector("#theme-switcher-label");
 
 themeButton.addEventListener("click", () => {
 	const isDark = document.documentElement.classList.toggle("dark");
 	themeButton.setAttribute("aria-pressed", String(isDark));
-	themeLabel.textContent = isDark ? "Light Mode" : "Dark Mode";
+
+    if (isDark) {
+		themeLabel.textContent = "Light Mode";
+		localStorage.setItem('theme', 'dark');
+	} else {
+		themeLabel.textContent = "Dark Mode";
+		localStorage.setItem('theme', 'light');
+	}
 });
+
+if (savedTheme === 'dark') {
+	themeLabel.textContent = "Light Mode";
+	document.documentElement.classList.toggle("dark");
+}
+else {
+	themeLabel.textContent = "Dark Mode";
+	document.documentElement.classList.toggle("light");
+}
+
 
 
 /*
